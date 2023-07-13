@@ -1,0 +1,54 @@
+# //  ModelSim SE-64 10.4 Dec  3 2014 
+# //
+# //  Copyright 1991-2014 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# //  THIS DOCUMENT CONTAINS TRADE SECRETS AND COMMERCIAL OR FINANCIAL
+# //  INFORMATION THAT ARE PRIVILEGED, CONFIDENTIAL, AND EXEMPT FROM
+# //  DISCLOSURE UNDER THE FREEDOM OF INFORMATION ACT, 5 U.S.C. SECTION 552.
+# //  FURTHERMORE, THIS INFORMATION IS PROHIBITED FROM DISCLOSURE UNDER
+# //  THE TRADE SECRETS ACT, 18 U.S.C. SECTION 1905.
+# //
+# vsim -novopt tb 
+# Start time: 21:02:24 on Mar 09,2023
+# ** Warning: (vsim-8891) All optimizations are turned off because the -novopt switch is in effect. This will cause your simulation to run very slowly. If you are using this switch to preserve visibility for Debug or PLI features please see the User's Manual section on Preserving Object Visibility with vopt.
+# 
+# Refreshing D:/Software/UserDefinedInstallationSite/VBox/Share/risc_v_project/tb/work.tb
+# Loading work.tb
+# Refreshing D:/Software/UserDefinedInstallationSite/VBox/Share/risc_v_project/tb/work.open_risc_v_soc
+# Loading work.open_risc_v_soc
+# Refreshing D:/Software/UserDefinedInstallationSite/VBox/Share/risc_v_project/tb/work.open_risc_v
+# Loading work.open_risc_v
+# Refreshing D:/Software/UserDefinedInstallationSite/VBox/Share/risc_v_project/tb/work.pc_reg
+# Loading work.pc_reg
+# Refreshing D:/Software/UserDefinedInstallationSite/VBox/Share/risc_v_project/tb/work.ifetch
+# Loading work.ifetch
+# Refreshing D:/Software/UserDefinedInstallationSite/VBox/Share/risc_v_project/tb/work.if_id
+# Loading work.if_id
+# Refreshing D:/Software/UserDefinedInstallationSite/VBox/Share/risc_v_project/tb/work.if_id_dff_set
+# Loading work.if_id_dff_set
+# Refreshing D:/Software/UserDefinedInstallationSite/VBox/Share/risc_v_project/tb/work.id
+# Loading work.id
+# Refreshing D:/Software/UserDefinedInstallationSite/VBox/Share/risc_v_project/tb/work.regs
+# Loading work.regs
+# Refreshing D:/Software/UserDefinedInstallationSite/VBox/Share/risc_v_project/tb/work.id_ex
+# Loading work.id_ex
+# Refreshing D:/Software/UserDefinedInstallationSite/VBox/Share/risc_v_project/tb/work.id_ex_dff_set
+# Loading work.id_ex_dff_set
+# Refreshing D:/Software/UserDefinedInstallationSite/VBox/Share/risc_v_project/tb/work.ex
+# Loading work.ex
+# Refreshing D:/Software/UserDefinedInstallationSite/VBox/Share/risc_v_project/tb/work.ctrl
+# Loading work.ctrl
+# Refreshing D:/Software/UserDefinedInstallationSite/VBox/Share/risc_v_project/tb/work.rom
+# Loading work.rom
+run 1ms
+############################
+########    pass   #########
+############################
+# ** Note: $finish    : tb.v(50)
+#    Time: 6400 ns  Iteration: 0  Instance: /tb
+# End time: 21:02:33 on Mar 09,2023, Elapsed time: 0:00:09
+# Errors: 0, Warnings: 1

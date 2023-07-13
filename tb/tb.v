@@ -1,12 +1,15 @@
+// `include "open_risc_v_soc.v"
 `timescale 1ns / 1ns
-
-`include "../rtl/open_risc_v_soc.v"
 
 module tb;
 
 	reg clk;
 	reg rst;
 	
+	
+	wire x3 = tb.open_risc_v_soc_inst.open_risc_v_inst.regs_inst.regs[3];
+	wire x26 = tb.open_risc_v_soc_inst.open_risc_v_inst.regs_inst.regs[26];
+	wire x27 = tb.open_risc_v_soc_inst.open_risc_v_inst.regs_inst.regs[27];
 	
 	
 	always #10 clk = ~clk;
@@ -20,24 +23,35 @@ module tb;
 	
 	//rom 初始值
 	initial begin
-		$readmemb("./tb/inst_data_ADD.txt",tb.open_risc_v_soc_inst.rom_inst.rom_mem);
+		//$readmemh("./inst_txt/rv32ui-p-blt.txt",tb.open_risc_v_soc_inst.rom_inst.rom_mem);  	//modelsim
+		$readmemh("./generated/inst_data.txt",tb.open_risc_v_soc_inst.rom_inst.rom_mem);		//python
+
 	end
 
+	integer r;
 	initial begin
-		while(1)begin
-			@(posedge clk) 
-			$display("x27 register value is %d",tb.open_risc_v_soc_inst.open_risc_v_inst.regs_inst.regs[27]);
-			$display("x28 register value is %d",tb.open_risc_v_soc_inst.open_risc_v_inst.regs_inst.regs[28]);
-			$display("x29 register value is %d",tb.open_risc_v_soc_inst.open_risc_v_inst.regs_inst.regs[29]);
-			$display("---------------------------");
-			$display("---------------------------");
+		wait(x26 == 32'b1);
+		
+		#200;
+		if(x27 == 32'b1) begin
+			$display("########    PASS   #########");
 		end
+		else begin
+			$display("########    FAIL   #########");
+			$display("fail testnum = %2d", x3);
+			for(r = 0;r < 31; r = r + 1)begin
+				$display("x%2d register value is %d",r,tb.open_risc_v_soc_inst.open_risc_v_inst.regs_inst.regs[r]);	
+			end	
+		end
+		$finish();
 	end
 	
 	open_risc_v_soc open_risc_v_soc_inst(
 		.clk   		(clk),
 		.rst 		(rst)
 	);
+
+
 
 
 	

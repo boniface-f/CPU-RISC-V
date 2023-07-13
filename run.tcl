@@ -1,14 +1,14 @@
 if {![file isdirectory work]} {
-	file mkdir work
+	file mkdir .tb/work
 	puts "mkdir work"
 } else {
 	puts "work exists"
 }
 
 
-define_design_lib work -path ./work
+define_design_lib work -path ./tb/work
 
-analyze -library work -format verilog {./rtl/open_risc_v_soc.v}
+analyze -library work -format verilog {./tb/open_risc_v_soc.v}
 
 elaborate open_risc_v_soc -architecture verilog -library work -update
 
@@ -36,10 +36,9 @@ uplevel #0 compile -map_effort medium -area_effort medium -boundary_optimization
 set_dont_touch open_risc_v
 
 current_design open_risc_v_soc
-
 check_design
-
 uplevel #0 compile -map_effort medium -area_effort medium -boundary_optimization -incremental_mapping -exact_map
+
 # -exact_map: this checks that the new synthesized design is functinally
 #             equivalent to the original design.
 # -boundary_optimization: this opton allows for logic optimization across
@@ -48,14 +47,13 @@ uplevel #0 compile -map_effort medium -area_effort medium -boundary_optimization
 #                         this optimization can simplify the logic in the 
 #                         sub-design.
 
-write -format ddc -hier -out open_risc_v_soc.ddc
+write -format ddc -hier -out ./tb/open_risc_v_soc.ddc
 set test_stil_netlist_format verilog
 change_names -rules verilog -hierarchy
-write -hierarchy -format verilog -output open_risc_v_soc_netlist.v
-write_sdf open_risc_v_soc.sdf
-write_sdc open_risc_v_soc.sdc
+write -hierarchy -format verilog -output ./tb/open_risc_v_soc_netlist.v
+write_sdf ./tb/open_risc_v_soc.sdf
+write_sdc ./tb/open_risc_v_soc.sdc
 
 report_area
 #report_timing -path full -delay max -nworst 1 -max_paths 1 -significant_digits 2 -sort_by group
-
 
